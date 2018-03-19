@@ -623,7 +623,7 @@ class RpcServiceModel
         });
 
         $key = ['zf-versioning', 'uri'];
-        $this->configResource->patchKey($key, $versioning);
+        $this->configResource->replaceKey($key, $versioning);
     }
 
     /**

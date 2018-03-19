@@ -33,7 +33,7 @@ class ContentNegotiationModel
     public function create($name, array $contentConfig)
     {
         $key = 'zf-content-negotiation.selectors.' . $name;
-        $this->globalConfig->patchKey($key, $contentConfig);
+        $this->globalConfig->replaceKey($key, $contentConfig);
         return new ContentNegotiationEntity($name, $contentConfig);
     }
 

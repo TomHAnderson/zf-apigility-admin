@@ -830,7 +830,7 @@ class RestServiceModel implements EventManagerAwareInterface
 
         foreach ($this->restArrayUpdateOptions as $property => $configKey) {
             $key = sprintf('zf-rest.%s.%s', $original->controllerServiceName, $configKey);
-            $this->configResource->patchKey($key, $update->$property);
+            $this->configResource->replaceKey($key, $update->$property);
         }
     }
 
@@ -847,7 +847,7 @@ class RestServiceModel implements EventManagerAwareInterface
 
         if ($update->selector) {
             $key = $baseKey . 'controllers.' . $service;
-            $this->configResource->patchKey($key, $update->selector);
+            $this->configResource->replaceKey($key, $update->selector);
         }
 
         // Array dereferencing is a PITA
@@ -856,7 +856,7 @@ class RestServiceModel implements EventManagerAwareInterface
             && ! empty($acceptWhitelist)
         ) {
             $key = $baseKey . 'accept_whitelist.' . $service;
-            $this->configResource->patchKey($key, $acceptWhitelist);
+            $this->configResource->replaceKey($key, $acceptWhitelist);
         }
 
         $contentTypeWhitelist = $update->contentTypeWhitelist;
@@ -864,7 +864,7 @@ class RestServiceModel implements EventManagerAwareInterface
             && ! empty($contentTypeWhitelist)
         ) {
             $key = $baseKey . 'content_type_whitelist.' . $service;
-            $this->configResource->patchKey($key, $contentTypeWhitelist);
+            $this->configResource->replaceKey($key, $contentTypeWhitelist);
         }
     }
 
@@ -1086,7 +1086,7 @@ class RestServiceModel implements EventManagerAwareInterface
         });
 
         $key = ['zf-versioning', 'uri'];
-        $this->configResource->patchKey($key, $versioning);
+        $this->configResource->replaceKey($key, $versioning);
     }
 
     /**

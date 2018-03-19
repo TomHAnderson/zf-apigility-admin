@@ -151,7 +151,7 @@ class DbAdapterModelTest extends TestCase
         $model->create('Db\New', ['driver' => 'Pdo_Sqlite', 'database' => __FILE__]);
 
         $global = include $this->globalConfigPath;
-        $this->assertDbConfigEquals([], 'Db\Old', $global);
+        $this->assertDbConfigEquals($localSeedConfig['db']['adapters']['Db\Old'], 'Db\Old', $global);
         $this->assertDbConfigEquals([], 'Db\New', $global);
 
         $local  = include $this->localConfigPath;
